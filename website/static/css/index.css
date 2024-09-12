@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comic Neue", cursive ;
+}
+
+body {
+    padding-top: 90px; /* Adjust this value based on your navbar height */
+}
+
+h1 {
+    font-weight: 700;
+    font-style: normal;
+}
+
+nav#nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 30px;
+    position: fixed; /* Changed from sticky to fixed */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background: #E3E6F3; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
+    transition: background-color 0.3s ease;
+}
+
+nav#nav-bar.scrolled {
+    background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    /* background: #E3E6F3; */
+}
+
+#logo {
+    background-color: #0056b3;
+    border: 5px;
+    height: 50px;
+}
+
+.action-icons ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.action-icons li {
+    display: block;
+    padding: 0 20px;
+}
+
+ /* Hamburger Icon styles */
+.hamburger {
+    display: none; /* Hidden on large screens */
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .action-icons {
+        display: none; /* Hide the action icons on smaller screens */
+    }
+
+    .hamburger {
+        display: flex; /* Show the hamburger on smaller screens */
+    }
+
+    /* When hamburger is active (toggle menu on click) */
+    .action-icons.active {
+        display: block;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background-color: #E3E6F3;
+        width: 100%;
+        text-align: center;
+    }
+
+    .action-icons ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    .action-icons li {
+        padding: 10px 0;
+    }
+}
+
+/* Hero Section */
+
+#hero {
+    background-image: url('../images/hero.png');
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    padding-left: 50px;
+    position: absolute;
+    top: 70%;
+    bottom: 20%;
+    /* transform: translate(-50%, -50%); */
+    z-index: 1;
+    font-weight: 900;
+    color: #E3E6F3;
+}
+
+.hero-content h3 {
+    padding-bottom: 5px;
+}
+
+
+/* Features Section */
+
+#shop-by-category h2 {
+    font-size: 40px;
+    margin: 20px 0px 0px 10px;
+    text-align: center;
+    z-index: 1;
+}
+
+.categories-div {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Allows items to wrap to the next row on smaller screens */
+    gap: 20px;
+}
+
+
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Makes the category take full width */
+    max-width: 200px; /* Set a max width for larger screens */
+}
+
+.category img {
+    height: 250px;
+    padding: 10px;
+    object-fit: cover;
+}
+
+.category a {
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+}
+
+/* Responsive Styling for smaller screens */
+@media screen and (max-width: 768px) {
+    .categories-div {
+        flex-direction: column; /* Stacks categories vertically on smaller screens */
+        align-items: center;
+    }
+
+    .category img {
+        height: 200px; /* Reduce image size on smaller screens */
+    }
+}
+
+/* Further adjustments for very small screens */
+@media screen and (max-width: 480px) {
+    #shop-by-category h2 {
+        font-size: 30px; /* Reduce heading size for very small screens */
+    }
+
+    .category img {
+        height: 150px; /* Further reduce image size */
+    }
+
+    .category a {
+        font-size: 16px; /* Reduce font size for smaller screens */
+    }
+}
+
+/* CTA Banners Styles */
+
+.cta-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;    
+}
+
+.cta-flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    height: auto;
+}
+
+.cta-banner {
+    flex: 1;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    /* padding: 2rem; */
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 31.25rem;
+}
+
+.cta-content {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    /* transform: translate(-50%, -50%); */
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.cta-banner h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-banner p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+} 
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-inner {
+    display: flex;
+    position: relative;
+    transition: transform 0.5s ease;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 31.25rem;
+    flex: 0 0 auto;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.bg-new-arrivals {
+    background-image: url('../images/bg-new-arrivals.jpeg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-best-sellers {
+    background-image: url('../images/bg-best-sellers.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-summer-sale {
+    background-image: url('../images/bg-summer-sale.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-limited-edition {
+    background-image: url('../images/bg-limited-edition.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.newsletter {
+    background-color: antiquewhite;
+}
+
+.first-time-buyer {
+    background-image: url('../images/first-time-buyer.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 50vh;
+    /* text-align: center; */
+}
+
+.first-time-buyer h2 {
+    color: black;
+    padding: 60px 0px 0px 60px;
+}
+
+.first-time-buyer p {
+    color: black;
+    padding: 0px 0px 0px 60px;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    .cta-flex-container {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+}
