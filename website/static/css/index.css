@@ -36,6 +36,8 @@ nav#nav-bar.scrolled {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+
+
 header {
     display: flex;
     flex-direction: column;
@@ -509,3 +511,32 @@ header {
         margin-top: 15px;
     }
 }
+
+/* Styling for Flash Messages */
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .flashes li {
+    padding: 15px;
+    /* margin-bottom: 10px; */
+    border-radius: 5px;
+  }
+  
+  .flashes .success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .flashes .error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .flashes .info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  

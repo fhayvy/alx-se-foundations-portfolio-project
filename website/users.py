@@ -8,7 +8,7 @@ users = Blueprint('users', __name__)
 
 @users.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', user=current_user)
 
 @users.route('/profiles')
 def profiles():
@@ -25,7 +25,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
-                print("Login successful")
+                flash(f'Welcome {user.first_name}', category='success')
                 return redirect(url_for('users.index'))
 
             else:
@@ -33,7 +33,7 @@ def login():
         else:
             print("Email does not exist")
 
-    return render_template('login.html')
+    return render_template('login.html', user=current_user)
 
 
 @users.route('/create', methods=['GET', 'POST'])
@@ -47,14 +47,14 @@ def register():
 
         user = User.query.filter_by(email=email).first()
         if user:
-            print('Email already exists, please use a different email')
+            flash('Email already exists, please use a different email', category='error')
         
         # Validation Logic
         if not email or not first_name or not last_name or not password1 or not password2:
-            # flash('All fields are required!', error)
+            flash('All fields are required!', category='error')
             pass
         elif password1 != password2:
-            # flash('Passwords do not match!', error)
+            flash('Passwords do not match!', category='error')
             pass
         else:
             new_user = User(
@@ -65,11 +65,11 @@ def register():
             )
             db.session.add(new_user)
             db.session.commit()
-            print("User created")
-            login_user(user, remember=True)
+            login_user(new_user, remember=True)
+            flash("Account created", category='success')
             # flash(f'Welcome {first_name}', success)
             return redirect(url_for('users.index'))
-    return render_template('sign-up.html')
+    return render_template('sign-up.html', user=current_user)
     
 
 @users.route('/logout')

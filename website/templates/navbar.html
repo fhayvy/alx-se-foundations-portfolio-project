@@ -16,6 +16,11 @@
         <li><a href=""><img src="{{ url_for('static', filename='images/search.svg') }}"  alt="search"></a></li>
         <li><a href=""><img src="{{ url_for('static', filename='images/heart.svg') }}"  alt="heart"></a></li>
         <li><a href=""><img src="{{ url_for('static', filename='images/cart.svg') }}"  alt="cart"></a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{{ url_for('users.logout') }}">Log Out</a></li>
+        {% else %}
+        <li><a href="{{ url_for('users.login') }}">Log In</a></li>
+        {% endif %}
     </ul>
   </div>   
 </nav>
