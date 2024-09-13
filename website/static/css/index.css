@@ -360,7 +360,101 @@ header {
 
 
 .newsletter {
-    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row; /* Default: side-by-side layout */
+    padding: 2.5rem;
+    gap: 2.5rem;
+    align-items: center; /* Vertically center the content */
+    justify-content: space-between; /* Add space between the image and text */
+}
+
+.newsletter img {
+    width: 50%; /* Set a default width for larger screens */
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+.newsletter div {
+    flex: 1; /* Allow the text section to grow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.newsletter div h2 {
+    color: black;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.newsletter div p {
+    color: black;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.newsletter form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.newsletter input[type="email"] {
+    padding: 0.5rem;
+    margin-right: 1rem;
+    flex: 1;
+}
+
+.newsletter button {
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .newsletter {
+        flex-direction: column; /* Stack the image and text vertically */
+        text-align: center; /* Center-align text for smaller screens */
+        padding: 1.5rem;
+    }
+
+    .newsletter img {
+        width: 100%; /* Make the image take full width on small screens */
+        margin-bottom: 1.5rem; /* Add space between the image and text */
+    }
+
+    .newsletter div h2 {
+        font-size: 1.75rem; /* Slightly smaller font size for medium screens */
+    }
+
+    .newsletter input[type="email"], .newsletter button {
+        width: 100%; /* Make input and button full width */
+        margin: 0 0 1rem 0;
+    }
+
+    .newsletter form {
+        flex-direction: column; /* Stack the input and button on top of each other */
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter div h2 {
+        font-size: 1.5rem; /* Further reduce font size for small screens */
+    }
+
+    .newsletter p {
+        font-size: 1rem; /* Adjust paragraph text size */
+    }
+
+    .newsletter input[type="email"] {
+        padding: 0.4rem;
+    }
+
+    .newsletter button {
+        padding: 0.4rem 0.8rem;
+    }
 }
 
 .first-time-buyer {
@@ -382,6 +476,31 @@ header {
     padding: 0px 0px 0px 60px;
     font-weight: 700;
     font-style: normal;
+}
+
+.first-time-buyer .cta-button {
+    display: inline-block; /* Ensures the button only takes up as much space as needed */
+    background-color: #ff6600; /* Button background color */
+    margin-left: 60px;
+    color: white; /* Text color */
+    padding: 10px 20px; /* Add padding to the button */
+    font-size: 1.2rem; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+    text-align: center; /* Center the text inside the button */
+    text-decoration: none; /* Remove underline from the link */
+    border-radius: 5px; /* Round corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.first-time-buyer .cta-button:hover {
+    background-color: #e65c00; /* Darken the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+}
+
+.first-time-buyer .cta-button:active {
+    background-color: #cc5200; /* Even darker color on click */
+    box-shadow: none; /* Remove shadow when clicked */
 }
 
 @media (max-width: 768px) {

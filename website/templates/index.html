@@ -99,22 +99,25 @@
         <h2>First-Time Buyer?</h2>
         <p>Get 10% off your first purchase when you sign up</p>
         <p>Lot's of free Coupons for you</p>
-        <a href="{{ url_for('users.register_user') }}" class="cta-button">Sign Up Now</a>
+        <a href="{{ url_for('users.register') }}" class="cta-button">Sign Up Now</a>
     </section>
 
     <section class="cta-banner newsletter">
-        <h2>Stay in the Loop</h2>
+        <img src="{{ url_for('static', filename='images/test.jpg') }}" />
+        <div>
+            <h2>Stay in the Loop</h2>
         <p>Subscribe to our newsletter for exclusive offers and updates.</p>
         <form>
             <input type="email" placeholder="Enter your email">
             <button type="submit">Subscribe</button>
         </form>
+        </div>   
     </section>
 
-    <section id="about">
+    <!--<section id="about">
         <h2>About Section</h2>
         <p>This is the about section of your webpage.</p>
-    </section>
+    </section>-->
 </main>
 
 <footer>

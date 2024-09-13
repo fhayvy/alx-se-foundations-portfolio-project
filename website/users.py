@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
+from flask_login import login_user, login_required, logout_user, current_user
 
 users = Blueprint('users', __name__)
 
@@ -15,7 +16,7 @@ def profiles():
 
 
 @users.route('/login', methods=['GET', 'POST'])
-def login_user():
+def login():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
@@ -23,7 +24,10 @@ def login_user():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
+                login_user(user, remember=True)
                 print("Login successful")
+                return redirect(url_for('users.index'))
+
             else:
                 print("Incorrect password")
         else:
@@ -33,7 +37,7 @@ def login_user():
 
 
 @users.route('/create', methods=['GET', 'POST'])
-def register_user():
+def register():
     if request.method == "POST":
         email = request.form.get('email')
         first_name = request.form.get('first-name')
@@ -62,11 +66,14 @@ def register_user():
             db.session.add(new_user)
             db.session.commit()
             print("User created")
+            login_user(user, remember=True)
             # flash(f'Welcome {first_name}', success)
             return redirect(url_for('users.index'))
     return render_template('sign-up.html')
     
 
 @users.route('/logout')
-def logout_user():
-    return "<p>Are you sure you want to log out</p>"
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('users.login'))
